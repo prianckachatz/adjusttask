@@ -1,0 +1,11 @@
+create function min_max_val()
+returns text
+ LANGUAGE plpgsql
+ AS $$
+  declare
+  mmv text;
+  begin
+  select format('%s -> %s',min(id),max(id) )min_max_vals into mmv from towns;
+  return mmv;
+ end;
+$$ ;
