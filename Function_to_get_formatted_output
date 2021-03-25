@@ -9,3 +9,18 @@ returns text
   return mmv;
  end;
 $$ ;
+========================================
+
+ \d towns
+                                   Table "test.towns"
+   Column   |         Type          |                     Modifiers
+------------+-----------------------+----------------------------------------------------
+ id         | integer               | not null default nextval('towns_id_seq'::regclass)
+ code       | character varying(10) | not null
+ article    | text                  |
+ name       | text                  | not null
+ department | character varying(4)  | not null
+Indexes:
+    "towns_pkey" PRIMARY KEY, btree (id)
+    "towns_code_department_key" UNIQUE CONSTRAINT, btree (code, department)
+    "towns_id_key" UNIQUE CONSTRAINT, btree (id)
