@@ -1,26 +1,12 @@
-create function min_max_val()
-returns text
+Function:
+
+create function min_to_max_val( cols text,tables text)
+returns SETOF RECORD
  LANGUAGE plpgsql
  AS $$
-  declare
-  mmv text;
   begin
-  select format('%s -> %s',min(id),max(id) )min_max_vals into mmv from towns;
-  return mmv;
- end;
-$$ ;
-========================================
 
- \d towns
-                                   Table "test.towns"
-   Column   |         Type          |                     Modifiers
-------------+-----------------------+----------------------------------------------------
- id         | integer               | not null default nextval('towns_id_seq'::regclass)
- code       | character varying(10) | not null
- article    | text                  |
- name       | text                  | not null
- department | character varying(4)  | not null
-Indexes:
-    "towns_pkey" PRIMARY KEY, btree (id)
-    "towns_code_department_key" UNIQUE CONSTRAINT, btree (code, department)
-    "towns_id_key" UNIQUE CONSTRAINT, btree (id)
+      RETURN QUERY EXECUTE 'select format(''%s - %s'',min('||$1||E'),max('||$1||E') ) AS min_to_max_val from '||$2||E';';
+ end
+$$ ;
+
