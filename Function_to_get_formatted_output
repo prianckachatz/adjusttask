@@ -1,6 +1,6 @@
 ### Function ###
 
-create function min_to_max_val( cols text,tables text)
+create function min_to_max_val( cols text,tablename text)
 returns SETOF RECORD
  LANGUAGE plpgsql
  AS $$
