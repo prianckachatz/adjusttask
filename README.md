@@ -1,6 +1,7 @@
 # adjusttask
 min_to_max_val is the function which can take inputs: tablename and column and then will find the max and min values of the column data and dispay in text format when called as below example:
 
+```
 SELECT min_to_max_val
 FROM 
     min_to_max_val('id','towns')
