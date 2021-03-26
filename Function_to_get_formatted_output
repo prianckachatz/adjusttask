@@ -1,4 +1,4 @@
-Function:
+### Function ###
 
 create function min_to_max_val( cols text,tables text)
 returns SETOF RECORD
